@@ -17,6 +17,6 @@ class MenuActivity : AppCompatActivity() {
     }
 
     fun showArtists(view: android.view.View) {
-        startActivity(Intent(view.context, ArtistsActivity::class.java))
+        startActivity(Intent(view.context, MusiciansActivity::class.java))
     }
 }

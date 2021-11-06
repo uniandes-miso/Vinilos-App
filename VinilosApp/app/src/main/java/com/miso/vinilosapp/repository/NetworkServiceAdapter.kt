@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.miso.vinilosapp.model.Album
+import com.miso.vinilosapp.model.Musician
 import org.json.JSONObject
 
 
@@ -45,6 +46,20 @@ class NetworkServiceAdapter constructor(context: Context) {
         )
     }
 
+    fun getMusicians(onComplete: (resp: List<Musician>) -> Unit, onError: (error: VolleyError) -> Unit) {
+        requestQueue.add(
+            getRequest("musicians",
+                { response ->
+                    val mapper = jacksonObjectMapper()
+                    var musicians: List<Musician> = mapper.readValue(response)
+                    onComplete(musicians)
+                },
+                {
+                    onError(it)
+                })
+        )
+    }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
@@ -54,4 +69,6 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun putRequest(path: String, body: JSONObject, responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ): JsonObjectRequest {
         return JsonObjectRequest(Request.Method.PUT, BASE_URL + path, body, responseListener, errorListener)
     }
+
+
 }

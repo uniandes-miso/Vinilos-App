@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.miso.vinilosapp.R
 
-class ArtistsActivity : AppCompatActivity() {
+class MusiciansActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_artists)
+        setContentView(R.layout.activity_musicians)
     }
 
     fun goBackMenu(view: android.view.View) {

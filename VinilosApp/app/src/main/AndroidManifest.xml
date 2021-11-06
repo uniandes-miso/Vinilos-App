@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosApp">
         <activity
-            android:name=".view.ArtistsActivity"
+            android:name=".view.MusiciansActivity"
             android:label="Artists"
             android:exported="false" />
         <activity
