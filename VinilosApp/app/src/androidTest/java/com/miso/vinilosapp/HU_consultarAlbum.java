@@ -5,9 +5,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
-import com.miso.vinilosapp.view.MainActivity;
-
 import com.miso.vinilosapp.R;
+import com.miso.vinilosapp.view.MainActivity2;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ import static org.hamcrest.Matchers.allOf;
 public class HU_consultarAlbum {
 
 @Rule
-    public ActivityScenarioRule<MainActivity> mActivityTestRule = new ActivityScenarioRule<>(MainActivity.class);
+    public ActivityScenarioRule<MainActivity2> mActivityTestRule = new ActivityScenarioRule<>(MainActivity2.class);
 
 @Test
     public void mainTestActivity (){
@@ -39,7 +39,10 @@ public class HU_consultarAlbum {
     albumBtn.perform(click());
 
     ViewInteraction confirmLoginBtn = onView(allOf(withId(R.id.titleAlbums), withText("Álbumes")));
-    confirmLoginBtn.noActivity();
+    confirmLoginBtn.perform(click());
+
+    ViewInteraction returnMenu = onView(allOf(withId(R.id.textMenuAlbums), withText("Menu"),isDisplayed()));
+    returnMenu.perform(click());
 //check(matches(isDisplayed());
 
 
