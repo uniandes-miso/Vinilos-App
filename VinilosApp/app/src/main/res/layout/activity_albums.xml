@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#343F4B"
-    tools:context=".view.AlbumsActivity">
+    tools:context=".ui.AlbumsActivity">
 
     <TextView
         android:id="@+id/titleAlbums"
@@ -36,19 +36,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
-    <TextView
-        android:id="@+id/textListAlbums"
-        android:layout_width="334dp"
-        android:layout_height="430dp"
-        android:textAlignment="viewStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="#2196F3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

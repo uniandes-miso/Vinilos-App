@@ -1,7 +1,7 @@
 package com.miso.vinilosapp.model
 
 data class Album(
-    val Id: Int,
+    val albumId: Int,
     val name: String,
     val cover: String,
     val releaseDate: String,

@@ -11,19 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosApp">
         <activity
-            android:name=".view.MusiciansActivity"
+            android:name=".ui.MusiciansActivity"
             android:label="Artists"
             android:exported="false" />
         <activity
-            android:name=".view.AlbumsActivity"
+            android:name=".ui.AlbumsActivity"
             android:label="Albums"
             android:exported="false" />
         <activity
-            android:name=".view.MenuActivity"
+            android:name=".ui.MenuActivity"
             android:label="Menu"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity2"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.VinilosApp.NoActionBar">

@@ -3,6 +3,7 @@ package com.miso.vinilosapp.viewModel
 import android.app.Application
 import androidx.lifecycle.*
 import com.miso.vinilosapp.model.Album
+import com.miso.vinilosapp.network.NetworkServiceAdapter
 import com.miso.vinilosapp.repository.AlbumRepository
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
@@ -29,7 +30,7 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     }
 
     private fun refreshDataFromNetwork() {
-        albumsRepository.getAlbums({
+        albumsRepository.refreshData({
             _albums.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
@@ -40,10 +41,6 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
-    }
-
-    fun getAlbums() {
-        println(123456)
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {

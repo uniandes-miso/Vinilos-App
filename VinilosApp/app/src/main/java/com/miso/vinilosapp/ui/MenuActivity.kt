@@ -1,4 +1,4 @@
-package com.miso.vinilosapp.view
+package com.miso.vinilosapp.ui
 
 import android.content.Intent
 import android.os.Bundle

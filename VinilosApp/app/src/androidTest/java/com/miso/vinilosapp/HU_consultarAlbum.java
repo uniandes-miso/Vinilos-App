@@ -5,8 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
-import com.miso.vinilosapp.R;
-import com.miso.vinilosapp.view.MainActivity2;
+import com.miso.vinilosapp.ui.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,9 +13,6 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -27,7 +23,7 @@ import static org.hamcrest.Matchers.allOf;
 public class HU_consultarAlbum {
 
 @Rule
-    public ActivityScenarioRule<MainActivity2> mActivityTestRule = new ActivityScenarioRule<>(MainActivity2.class);
+    public ActivityScenarioRule<MainActivity> mActivityTestRule = new ActivityScenarioRule<>(MainActivity.class);
 
 @Test
     public void mainTestActivity (){

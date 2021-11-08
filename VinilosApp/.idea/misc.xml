@@ -6,9 +6,15 @@
         <entry key="../../../../../../../../../layout/compose-model-1636170053048.xml" value="2.0" />
         <entry key="app/src/main/res/layout/activity_albums.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/activity_artists.xml" value="0.23233695652173914" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_musicians.xml" value="0.12284701114488349" />
+        <entry key="app/src/main/res/layout/album_fragment.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/album_item.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/fragment_album.xml" value="0.213768115942029" />
+        <entry key="app/src/main/res/layout/fragment_album_list.xml" value="0.213768115942029" />
+        <entry key="app/src/main/res/layout/fragment_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_item_list.xml" value="0.22644927536231885" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.35260416666666666" />
       </map>
@@ -23,7 +29,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.23233695652173914" />
       </ProjectState>
     </option>
   </component>
