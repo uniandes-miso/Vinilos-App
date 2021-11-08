@@ -31,7 +31,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return albums.size
     }
 
     class AlbumViewHolder(val viewDataBinding: ViewDataBinding?) :

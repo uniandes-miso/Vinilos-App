@@ -36,6 +36,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/albumFragment"
+        android:name="com.miso.vinilosapp.ui.AlbumFragment"
+        android:layout_width="347dp"
+        android:layout_height="413dp"
+        android:label="album_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622"
+        tools:layout="@layout/album_fragment" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
