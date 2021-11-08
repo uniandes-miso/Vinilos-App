@@ -1,24 +1,58 @@
 package com.miso.vinilosapp.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
 import com.miso.vinilosapp.model.Album
+import com.miso.vinilosapp.repository.AlbumRepository
 
-class AlbumViewModel : ViewModel(){
-    private val albums: MutableLiveData<List<Album>> by lazy {
-        MutableLiveData<List<Album>>().also {
-            loadAlbums()
+class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
+
+    private val albumsRepository = AlbumRepository(application)
+
+    private val _albums = MutableLiveData<List<Album>>()
+
+    val albums: LiveData<List<Album>>
+        get() = _albums
+
+    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+
+    val eventNetworkError: LiveData<Boolean>
+        get() = _eventNetworkError
+
+    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+
+    val isNetworkErrorShown: LiveData<Boolean>
+        get() = _isNetworkErrorShown
+
+    init {
+        refreshDataFromNetwork()
+    }
+
+    private fun refreshDataFromNetwork() {
+        albumsRepository.getAlbums({
+            _albums.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })
+    }
+
+    fun onNetworkErrorShown() {
+        _isNetworkErrorShown.value = true
+    }
+
+    fun getAlbums() {
+        println(123456)
+    }
+
+    class Factory(val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return AlbumViewModel(app) as T
+            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
-
-    fun getAlbums(): LiveData<List<Album>> {
-        return albums
-    }
-
-    private fun loadAlbums() {
-        // Do an asynchronous operation to fetch users.
-    }
 }
-
-
