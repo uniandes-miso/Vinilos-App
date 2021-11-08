@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#343F4B"
+    tools:context=".ui.AlbumsActivity">
+
+    <TextView
+        android:id="@+id/titleAlbums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Álbumes"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#F95F62"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.14" />
+
+    <TextView
+        android:id="@+id/textMenuAlbums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goBackMenu"
+        android:text="Menu"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#77D353"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/albumFragment"
+        android:name="com.miso.vinilosapp.ui.AlbumFragment"
+        android:layout_width="347dp"
+        android:layout_height="413dp"
+        android:label="album_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622"
+        tools:layout="@layout/album_fragment" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
