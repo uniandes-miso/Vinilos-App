@@ -8,6 +8,11 @@
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/activity_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/album_item.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/fragment_album.xml" value="0.24547101449275363" />
+        <entry key="app/src/main/res/layout/activity_content.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/layout/album_item.xml" value="0.189209726443769" />
+        <entry key="app/src/main/res/layout/fragment_albums.xml" value="0.23233695652173914" />
       </map>
     </option>
   </component>
@@ -20,7 +25,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.16" />
+        <option name="scale" value="0.23233695652173914" />
       </ProjectState>
     </option>
   </component>

@@ -3,10 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/album">
+    app:startDestination="@id/albumFragment">
     <fragment
-        android:id="@+id/album"
-        android:name="com.miso.vinilosapp.album"
+        android:id="@+id/albumFragment"
+        android:name="com.miso.vinilosapp.ui.album"
         android:label="fragment_album"
-        tools:layout="@layout/fragment_albums" />
+        tools:layout="@layout/fragment_albums" >
+        <action
+            android:id="@+id/action_albumFragment_to_musiciansFragment"
+            app:destination="@id/musiciansFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/musiciansFragment"
+        android:name="com.miso.vinilosapp.ui.musicians"
+        android:label="fragment_musicians"
+        tools:layout="@layout/fragment_musicians" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
