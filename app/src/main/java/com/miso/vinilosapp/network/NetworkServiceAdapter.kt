@@ -2,6 +2,7 @@ package com.miso.vinilosapp.network
 
 import android.content.Context
 import android.util.Log
+import android.widget.ImageView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -9,6 +10,7 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.miso.vinilosapp.R
 import com.miso.vinilosapp.models.Album
 import org.json.JSONArray
 import org.json.JSONObject
@@ -29,7 +31,6 @@ class NetworkServiceAdapter  constructor(context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit){
-        Log.d("GET ALBUMS", "GET ALBUMS NETWORK ADAPTER")
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
@@ -38,7 +39,6 @@ class NetworkServiceAdapter  constructor(context: Context) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
-                Log.d("GET ALBUMS RESPONSE", list.size.toString())
                 onComplete(list)
             },
             Response.ErrorListener {

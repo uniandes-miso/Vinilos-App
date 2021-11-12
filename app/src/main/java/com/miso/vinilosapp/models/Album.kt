@@ -1,5 +1,7 @@
 package com.miso.vinilosapp.models
 
+import android.widget.ImageView
+
 data class Album(
     val albumId:Int,
     val name:String,

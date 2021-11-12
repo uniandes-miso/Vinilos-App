@@ -1,6 +1,7 @@
 package com.miso.vinilosapp.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.repositories.AlbumRepository
@@ -26,6 +27,7 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         get() = _isNetworkErrorShown
 
     init {
+        Log.d("REFRESH DATA" , "REFRESH DATA INIT")
         refreshDataFromNetwork()
     }
 
