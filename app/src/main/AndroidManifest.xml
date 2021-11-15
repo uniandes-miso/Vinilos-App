@@ -3,6 +3,7 @@
     package="com.miso.vinilosapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,18 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosApp">
         <activity
+            android:name=".ui.activity_content_collectors"
+            android:exported="false"
+            android:label="Collectors"
+            android:theme="@style/Theme.VinilosApp.NoActionBar" />
+        <activity
+            android:name=".ui.activity_content_musicians"
+            android:exported="false"
+            android:label="Musicians"
+            android:theme="@style/Theme.VinilosApp.NoActionBar" />
+        <activity
             android:name=".ui.activity_content"
-            android:theme="@style/Theme.VinilosApp.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Albums"
+            android:theme="@style/Theme.VinilosApp.NoActionBar" />
         <activity
             android:name=".ui.activity_menu"
-            android:label="Menú"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Menú" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

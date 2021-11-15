@@ -9,49 +9,51 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
 import com.miso.vinilosapp.databinding.AlbumItemBinding
+import com.miso.vinilosapp.databinding.MusicianItemBinding
 import com.miso.vinilosapp.models.Album
+import com.miso.vinilosapp.models.Musician
 import com.miso.vinilosapp.ui.albumDirections
+import com.miso.vinilosapp.ui.musiciansDirections
 
+class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolder>(){
 
-class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
-
-    var albums :List<Album> = emptyList()
+    var musicians :List<Musician> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
-        Log.d("Albums adapter" , "On create view")
-        val withDataBinding: AlbumItemBinding = DataBindingUtil.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicianViewHolder {
+        Log.d("Musicians adapter" , "On create view")
+        val withDataBinding: MusicianItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            AlbumViewHolder.LAYOUT,
+            MusicianViewHolder.LAYOUT,
             parent,
             false)
-        return AlbumViewHolder(withDataBinding)
+        return MusicianViewHolder(withDataBinding)
     }
 
-    override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MusicianViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            it.album = albums[position]
+            it.musician = musicians[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = albumDirections.actionAlbumFragmentToFragmentAlbumsDetail(albums[position].albumId)
+            val action = musiciansDirections.actionMusicianFragmentToFragmentMusiciansDetail(musicians[position].Id)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
     override fun getItemCount(): Int {
-        return albums.size
+        return musicians.size
     }
 
 
-    class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
+    class MusicianViewHolder(val viewDataBinding: MusicianItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {
             @LayoutRes
-            val LAYOUT = R.layout.album_item
+            val LAYOUT = R.layout.musician_item
         }
     }
 
