@@ -27,7 +27,7 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         get() = _isNetworkErrorShown
 
     init {
-        Log.d("REFRESH DATA" , "REFRESH DATA INIT")
+        Log.d("REFRESH DATA" , "REFRESH albums")
         refreshDataFromNetwork()
     }
 

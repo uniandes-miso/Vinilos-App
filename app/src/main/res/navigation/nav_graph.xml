@@ -8,18 +8,34 @@
         android:id="@+id/albumFragment"
         android:name="com.miso.vinilosapp.ui.album"
         android:label="fragment_album"
-        tools:layout="@layout/fragment_albums" >
+        tools:layout="@layout/fragment_albums">
         <action
-            android:id="@+id/action_albumFragment_to_musiciansFragment"
-            app:destination="@id/musiciansFragment" />
+            android:id="@+id/action_albumFragment_to_fragment_albums_detail"
+            app:destination="@id/fragment_albums_detail" />
     </fragment>
     <fragment
-        android:id="@+id/musiciansFragment"
-        android:name="com.miso.vinilosapp.ui.musicians"
-        android:label="fragment_musicians"
-        tools:layout="@layout/fragment_musicians" >
+        android:id="@+id/fragment_albums_detail"
+        android:name="com.miso.vinilosapp.ui.fragment_albums_detail"
+        android:label="fragment_albums_detail">
         <argument
             android:name="albumId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/musicianFragment"
+        android:name="com.miso.vinilosapp.ui.musicians"
+        android:label="fragment_musician"
+        tools:layout="@layout/fragment_musicians">
+        <action
+            android:id="@+id/action_musicianFragment_to_fragment_musicians_detail"
+            app:destination="@id/fragment_musicians_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_musicians_detail"
+        android:name="com.miso.vinilosapp.ui.fragment_musicians_detail"
+        android:label="fragment_musicians_detail">
+        <argument
+            android:name="musicianId"
             app:argType="integer" />
     </fragment>
 </navigation>

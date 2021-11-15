@@ -3,6 +3,7 @@ package com.miso.vinilosapp.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.miso.vinilosapp.R
 
 class activity_menu : AppCompatActivity() {
@@ -14,9 +15,14 @@ class activity_menu : AppCompatActivity() {
     fun showAlbums(view: android.view.View) {
         startActivity(Intent(view.context, activity_content::class.java))
     }
-/*
-    fun showArtists(view: android.view.View) {
-        startActivity(Intent(view.context, MusiciansActivity::class.java))
-    }*/
+
+    fun showMusicians(view: android.view.View) {
+        Log.d("musicians", "Function showMusicians activity_menu")
+        startActivity(Intent(view.context, activity_content_musicians::class.java))
+    }
+
+    fun showCollectors(view: android.view.View) {
+        startActivity(Intent(view.context, activity_content_collectors::class.java))
+    }
 
 }
