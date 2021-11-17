@@ -20,6 +20,8 @@
         <entry key="app/src/main/res/layout/album_item.xml" value="0.189209726443769" />
         <entry key="app/src/main/res/layout/fragment_albums.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/fragment_albums_detail.xml" value="0.23020833333333332" />
+        <entry key="app/src/main/res/layout/fragment_collectors.xml" value="0.10460992907801418" />
+        <entry key="app/src/main/res/layout/fragment_collectors_item.xml" value="0.11144883485309018" />
         <entry key="app/src/main/res/layout/fragment_musicians.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_musicians_detail.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/musician_item.xml" value="0.2866847826086957" />

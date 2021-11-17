@@ -34,6 +34,7 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
     }
 
     override fun onBindViewHolder(holder: MusicianViewHolder, position: Int) {
+        Log.d("Musicians" , "adapter - on bind view holder")
         holder.viewDataBinding.also {
             it.musician = musicians[position]
         }

@@ -6,9 +6,21 @@
     tools:context=".collectors">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:progressTint="#4CAF50"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/collectorsRv"
+        android:layout_width="327dp"
+        android:layout_height="473dp"
+        android:background="#343F4B"
+        android:visibility="visible"
+        tools:listitem="@layout/musician_item" />
 
 </FrameLayout>

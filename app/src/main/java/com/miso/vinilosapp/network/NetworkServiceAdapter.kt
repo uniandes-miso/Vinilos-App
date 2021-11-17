@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.miso.vinilosapp.models.Album
+import com.miso.vinilosapp.models.Collector
 import com.miso.vinilosapp.models.Musician
 import org.json.JSONArray
 import org.json.JSONObject
@@ -63,6 +64,21 @@ class NetworkServiceAdapter  constructor(context: Context) {
         )
     }
 
+    fun getCollectors(onComplete: (resp: List<Collector>) -> Unit, onError: (error: VolleyError) -> Unit) {
+        Log.d("REFRESH DATA Collectors" , "NETWORK SERVICE ADAPTER")
+        requestQueue.add(
+            getRequest("collectors",
+                { response ->
+                    val mapper = jacksonObjectMapper()
+                    var collectors: List<Collector> = mapper.readValue(response)
+                    onComplete(collectors)
+                    Log.d("REFRESH DATA MUSICIANS - tamano respuesta" , collectors.size.toString())
+                },
+                {
+                    onError(it)
+                })
+        )
+    }
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
