@@ -17,7 +17,6 @@ class activity_menu : AppCompatActivity() {
     }
 
     fun showMusicians(view: android.view.View) {
-        Log.d("musicians", "Function showMusicians activity_menu")
         startActivity(Intent(view.context, activity_content_musicians::class.java))
     }
 

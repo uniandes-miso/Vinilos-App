@@ -12,7 +12,8 @@
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/activity_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/album_item.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/fragment_album.xml" value="0.24547101449275363" />
-        <entry key="app/src/main/res/layout/activity_content.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_content.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_content_collectors.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/activity_content_musicians.xml" value="0.10955056179775281" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23233695652173914" />
@@ -21,10 +22,13 @@
         <entry key="app/src/main/res/layout/fragment_albums.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/fragment_albums_detail.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_collectors.xml" value="0.10460992907801418" />
+        <entry key="app/src/main/res/layout/fragment_collectors_detail.xml" value="0.11195542046605876" />
         <entry key="app/src/main/res/layout/fragment_collectors_item.xml" value="0.11144883485309018" />
         <entry key="app/src/main/res/layout/fragment_musicians.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_musicians_detail.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/musician_item.xml" value="0.2866847826086957" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2453125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -8,11 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
-import com.miso.vinilosapp.databinding.AlbumItemBinding
 import com.miso.vinilosapp.databinding.MusicianItemBinding
-import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Musician
-import com.miso.vinilosapp.ui.albumDirections
 import com.miso.vinilosapp.ui.musiciansDirections
 
 class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolder>(){

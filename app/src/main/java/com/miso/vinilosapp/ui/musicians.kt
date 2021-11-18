@@ -43,7 +43,7 @@ class musicians : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("musicians" , "musician fragment kotlin")
+        Log.d("Musicians", "create VIEW Musicians fragment")
         _binding = FragmentMusiciansBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = MusiciansAdapter()
@@ -51,6 +51,7 @@ class musicians : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("musicians" , "musician fragment kotlin - voewCreated")
         recyclerView = binding.musiciansRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter

@@ -33,6 +33,7 @@ class NetworkServiceAdapter  constructor(context: Context) {
         Volley.newRequestQueue(context.applicationContext)
     }
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit){
+        Log.d("REFRESH DATA ALBUMS" , "NETWORK SERVICE ADAPTER")
         requestQueue.add(getRequest("albums",
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
