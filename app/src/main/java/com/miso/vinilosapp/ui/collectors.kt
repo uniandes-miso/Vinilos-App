@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
 import com.miso.vinilosapp.databinding.FragmentAlbumsBinding
-import com.miso.vinilosapp.databinding.FragmentMusiciansBinding
+import com.miso.vinilosapp.databinding.FragmentCollectorsBinding
 import com.miso.vinilosapp.models.Album
-import com.miso.vinilosapp.models.Musician
+import com.miso.vinilosapp.models.Collector
 import com.miso.vinilosapp.ui.adapters.AlbumsAdapter
-import com.miso.vinilosapp.ui.adapters.MusiciansAdapter
+import com.miso.vinilosapp.ui.adapters.CollectorsAdapter
 import com.miso.vinilosapp.viewmodels.AlbumViewModel
-import com.miso.vinilosapp.viewmodels.MusicianViewModel
+import com.miso.vinilosapp.viewmodels.CollectorViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,47 +28,42 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [musicians.newInstance] factory method to
+ * Use the [collectors.newInstance] factory method to
  * create an instance of this fragment.
  */
-class musicians : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var _binding: FragmentMusiciansBinding? = null
+class collectors : Fragment() {
+    private var _binding: FragmentCollectorsBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: MusicianViewModel
-    private var viewModelAdapter: MusiciansAdapter? = null
+    private lateinit var viewModel: CollectorViewModel
+    private var viewModelAdapter: CollectorsAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("Musicians", "create VIEW Musicians fragment")
-        _binding = FragmentMusiciansBinding.inflate(inflater, container, false)
+        Log.d("albums" , "album fragment kotlin")
+        _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModelAdapter = MusiciansAdapter()
+        viewModelAdapter = CollectorsAdapter()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("musicians" , "musician fragment kotlin - voewCreated")
-        recyclerView = binding.musiciansRv
+        recyclerView = binding.collectorsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        Log.d("Musicians created", "Event create activity musicians")
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = getString(R.string.title_musicians)
-        viewModel = ViewModelProvider(this, MusicianViewModel.Factory(activity.application)).get(
-            MusicianViewModel::class.java)
-        viewModel.musicians.observe(viewLifecycleOwner, Observer<List<Musician>> {
+        activity.actionBar?.title = getString(R.string.title_collectors)
+        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application)).get(CollectorViewModel::class.java)
+        viewModel.collectors.observe(viewLifecycleOwner, Observer<List<Collector>> {
             it.apply {
-                viewModelAdapter!!.musicians = this
+                viewModelAdapter!!.collectors = this
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
@@ -87,4 +82,5 @@ class musicians : Fragment() {
             viewModel.onNetworkErrorShown()
         }
     }
+
 }

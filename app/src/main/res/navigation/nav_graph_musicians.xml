@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_musicians"
+    app:startDestination="@id/musicianFragment">
+    <fragment
+        android:id="@+id/musicianFragment"
+        android:name="com.miso.vinilosapp.ui.musicians"
+        android:label="fragment_musician"
+        tools:layout="@layout/fragment_musicians">
+        <action
+            android:id="@+id/action_musicianFragment_to_fragment_musicians_detail"
+            app:destination="@id/fragment_musicians_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_musicians_detail"
+        android:name="com.miso.vinilosapp.ui.fragment_musicians_detail"
+        android:label="fragment_musicians_detail">
+        <argument
+            android:name="Id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorFragment"
+        android:name="com.miso.vinilosapp.ui.collectors"
+        android:label="fragment_collectors"
+        tools:layout="@layout/fragment_collectors">
+        <action
+            android:id="@+id/action_collectorFragment_to_fragment_collectors_detail"
+            app:destination="@id/fragment_collectors_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_collectors_detail"
+        android:name="com.miso.vinilosapp.ui.collectors_detail"
+        android:label="fragment_collectors_detail">
+        <argument
+            android:name="Id"
+            app:argType="integer" />
+    </fragment>
+</navigation>

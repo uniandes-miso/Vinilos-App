@@ -14,6 +14,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showVinilosAppMenu(view: android.view.View) {
-        startActivity(Intent(view.context, activity_menu::class.java))
+        startActivity(Intent(view.context, activity_content::class.java))
     }
 }
