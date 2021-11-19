@@ -5,6 +5,6 @@ data class Musician(
     val name: String,
     val image: String,
     val description: String,
-    val birthDate: String,
-    var albums:List<Album>?
+    val birthDate: String //,
+  //  var albums:List<Album>?
 )
