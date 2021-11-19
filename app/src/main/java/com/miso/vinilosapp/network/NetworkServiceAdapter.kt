@@ -42,6 +42,7 @@ class NetworkServiceAdapter  constructor(context: Context) {
                     val item = resp.getJSONObject(i)
                     list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
+                Log.d("REFRESH DATA ALBUMS" , list.size.toString())
                 onComplete(list)
             },
             Response.ErrorListener {

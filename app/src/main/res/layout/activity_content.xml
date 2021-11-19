@@ -31,23 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAlbumsTitle"
         app:layout_constraintVertical_bias="1.0"
         app:navGraph="@navigation/nav_graph" />
-
-    <TextView
-        android:id="@+id/textAlbumsTitle"
-        android:layout_width="408dp"
-        android:layout_height="68dp"
-        android:text="Albums"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="#F95F62"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
