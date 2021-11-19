@@ -13,16 +13,15 @@ class activity_content_musicians : AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("Musicians", "create musicians content")
         super.onCreate(savedInstanceState)
        // setContentView(R.layout.activity_content_musicians)
         val binding = ActivityContentMusiciansBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        Log.d("Musicians", "create musicians content - az")
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_musicians) as NavHostFragment
         // Instantiate the navController using the NavHostFragment
         navController = navHostFragment.navController
+        Log.d("Musicians", "create musicians content finish ")
     }
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()

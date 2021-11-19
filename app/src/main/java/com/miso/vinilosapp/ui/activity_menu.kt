@@ -13,16 +13,12 @@ class activity_menu : AppCompatActivity() {
     }
 
     fun showAlbums(view: android.view.View) {
-        startActivity(Intent(view.context, activity_content::class.java))
     }
 
     fun showMusicians(view: android.view.View) {
-        Log.d("musicians", "Function showMusicians activity_menu")
-        startActivity(Intent(view.context, activity_content_musicians::class.java))
     }
 
     fun showCollectors(view: android.view.View) {
-        startActivity(Intent(view.context, activity_content_collectors::class.java))
     }
 
 }
