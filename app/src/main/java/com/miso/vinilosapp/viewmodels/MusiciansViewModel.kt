@@ -3,9 +3,7 @@ package com.miso.vinilosapp.viewmodels
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
-import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Musician
-import com.miso.vinilosapp.repositories.AlbumRepository
 import com.miso.vinilosapp.repositories.MusicianRepository
 
 class MusicianViewModel(application: Application) :  AndroidViewModel(application) {

@@ -8,11 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
-import com.miso.vinilosapp.databinding.AlbumItemBinding
 import com.miso.vinilosapp.databinding.MusicianItemBinding
-import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Musician
-import com.miso.vinilosapp.ui.albumDirections
 import com.miso.vinilosapp.ui.musiciansDirections
 
 class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolder>(){
@@ -34,6 +31,7 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
     }
 
     override fun onBindViewHolder(holder: MusicianViewHolder, position: Int) {
+        Log.d("Musicians" , "adapter - on bind view holder")
         holder.viewDataBinding.also {
             it.musician = musicians[position]
         }

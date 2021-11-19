@@ -12,24 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinilosApp">
         <activity
-            android:name=".ui.activity_content_collectors"
-            android:exported="false"
-            android:label="Collectors"
-            android:theme="@style/Theme.VinilosApp.NoActionBar" />
-        <activity
-            android:name=".ui.activity_content_musicians"
-            android:exported="false"
-            android:label="Musicians"
-            android:theme="@style/Theme.VinilosApp.NoActionBar" />
-        <activity
             android:name=".ui.activity_content"
             android:exported="false"
-            android:label="Albums"
             android:theme="@style/Theme.VinilosApp.NoActionBar" />
         <activity
             android:name=".ui.activity_menu"
             android:exported="false"
             android:label="Menú" />
+        android:theme="@style/Theme.VinilosApp.NoActionBar" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
