@@ -66,7 +66,6 @@ class NetworkServiceAdapter  constructor(context: Context) {
                        val item = resp.getJSONObject(i)
                         list.add(i, Musician(Id = item.getInt("id") , name = item.getString("name") , image = item.getString("image")  , description = item.getString("description") , birthDate = item.getString("birthDate")))
                     }
-                    Log.d("REFRESH DATA Musicias" , list.size.toString())
                     onComplete(list)
                 },
                 {
@@ -74,25 +73,22 @@ class NetworkServiceAdapter  constructor(context: Context) {
                 })
         )
     }
-
-    fun getCollectors(onComplete: (resp: List<Collector>) -> Unit, onError: (error: VolleyError) -> Unit) {
-        Log.d("REFRESH DATA Collectors" , "NETWORK SERVICE ADAPTER")
-        requestQueue.add(
-            getRequest("collectors",
-                { response ->
-                    val resp = JSONArray(response)
-                    val list = mutableListOf<Collector>()
-                    for (i in 0 until resp.length()) {
-                        val item = resp.getJSONObject(i)
-                        list.add(i, Collector(Id = item.getInt("id") , name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")))
-                    }
-                    Log.d("REFRESH DATA Collectors" , list.size.toString())
-                    onComplete(list)
-                },
-                {
-                    onError(it)
-                })
-        )
+    fun getCollectors(onComplete:(resp:List<Collector>)->Unit, onError: (error:VolleyError)->Unit) {
+        requestQueue.add(getRequest("collectors",
+            Response.Listener<String> { response ->
+                Log.d("tagb", response)
+                val resp = JSONArray(response)
+                val list = mutableListOf<Collector>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Collector(collectorId = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")))
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+                Log.d("", it.message.toString())
+            }))
     }
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
