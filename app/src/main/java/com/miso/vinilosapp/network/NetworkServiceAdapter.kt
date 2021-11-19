@@ -55,10 +55,19 @@ class NetworkServiceAdapter  constructor(context: Context) {
         requestQueue.add(
             getRequest("musicians",
                 { response ->
-                    val mapper = jacksonObjectMapper()
-                    var musicians: List<Musician> = mapper.readValue(response)
-                    onComplete(musicians)
-                    Log.d("REFRESH DATA MUSICIANS - tamano respuesta" , musicians.size.toString())
+                   val mapper = jacksonObjectMapper()
+                   var musicians: List<Musician> = mapper.readValue(response)
+                    Log.d("REFRESH DATA ALBUMS" , musicians.size.toString())
+                   // onComplete(musicians)
+                   // Log.d("REFRESH DATA MUSICIANS - tamano respuesta" , musicians.size.toString())
+                   // val resp = JSONArray(response)
+                   // val list = mutableListOf<Musician>()
+                   // for (i in 0 until resp.length()) {
+                    //    val item = resp.getJSONObject(i)
+                    //    list.add(i, Musician(Id = item.getInt("id") , name = item.getString("name") , image = item.getString("image")  , description = item.getString("description") , birthDate = item.getString("birthDate") , albums = listOf(item.getJSONArray("albums")))
+                   // }
+                    //Log.d("REFRESH DATA ALBUMS" , list.size.toString())
+                  //  onComplete(list)
                 },
                 {
                     onError(it)

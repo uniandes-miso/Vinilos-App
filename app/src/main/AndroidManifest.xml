@@ -14,12 +14,12 @@
         <activity
             android:name=".ui.activity_content"
             android:exported="false"
-            android:label="Albums"
             android:theme="@style/Theme.VinilosApp.NoActionBar" />
         <activity
             android:name=".ui.activity_menu"
             android:exported="false"
             android:label="Menú" />
+        android:theme="@style/Theme.VinilosApp.NoActionBar" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
