@@ -9,49 +9,53 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
 import com.miso.vinilosapp.databinding.AlbumItemBinding
+import com.miso.vinilosapp.databinding.CollectorsItemBinding
+import com.miso.vinilosapp.databinding.MusicianItemBinding
 import com.miso.vinilosapp.models.Album
+import com.miso.vinilosapp.models.Collector
 import com.miso.vinilosapp.ui.albumDirections
+import com.miso.vinilosapp.ui.collectorsDirections
 
 
-class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.AlbumViewHolder>(){
+class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>(){
 
-    var albums :List<Album> = emptyList()
+    var collectors : List<Collector> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
-        Log.d("Albums adapter" , "On create view")
-        val withDataBinding: AlbumItemBinding = DataBindingUtil.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectorsAdapter.CollectorViewHolder {
+        Log.d("Collectors adapter" , "On create view")
+        val withDataBinding: CollectorsItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            AlbumViewHolder.LAYOUT,
+            CollectorsAdapter.CollectorViewHolder.LAYOUT,
             parent,
             false)
-        return AlbumViewHolder(withDataBinding)
+        return CollectorsAdapter.CollectorViewHolder(withDataBinding)
     }
 
-    override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CollectorViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            it.album = albums[position]
+            it.collector = collectors[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = albumDirections.actionAlbumFragmentToFragmentAlbumsDetail(albums[position].albumId)
+            val action = collectorsDirections.actionCollectorFragmentToFragmentCollectorsDetail(collectors[position].Id)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
     override fun getItemCount(): Int {
-        return albums.size
+        return collectors.size
     }
 
 
-    class AlbumViewHolder(val viewDataBinding: AlbumItemBinding) :
+    class CollectorViewHolder(val viewDataBinding: CollectorsItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
         companion object {
             @LayoutRes
-            val LAYOUT = R.layout.album_item
+            val LAYOUT = R.layout.collectors_item
         }
     }
 

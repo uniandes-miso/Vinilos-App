@@ -29,7 +29,7 @@
                 <TextView
                     android:id="@+id/tvCollectorName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="65dp"
                     android:text="@{collector.name}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                     android:textColor="#F8FFFFFF" />
@@ -37,7 +37,7 @@
                 <TextView
                     android:id="@+id/tvCollectorEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="63dp"
                     android:text="@{collector.email}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#E9361E" />
@@ -45,11 +45,10 @@
                 <TextView
                     android:id="@+id/tvCollectorTelephone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="58dp"
                     android:text="@{collector.telephone}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#E9361E" />
-
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

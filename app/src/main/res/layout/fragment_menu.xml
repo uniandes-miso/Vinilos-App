@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#343F4B"
     tools:context=".menu">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/textAlbumsTitle"
         android:layout_width="408dp"
@@ -13,27 +16,40 @@
         android:text="Menú"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#F95F62"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonAlbums"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="Albums" />
+        android:text="Albums"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAlbumsTitle"
+        app:layout_constraintVertical_bias="0.118"
+        tools:layout_editor_absoluteX="-16dp" />
 
     <Button
         android:id="@+id/buttonMusicians"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:text="Musicians" />
+        android:text="Musicians"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCollectors"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlbums"
+        app:layout_constraintVertical_bias="0.453"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/buttonCollectors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Collectors" />
+        android:text="Collectors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAlbumsTitle"
+        app:layout_constraintVertical_bias="0.4"
+        tools:layout_editor_absoluteX="0dp" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

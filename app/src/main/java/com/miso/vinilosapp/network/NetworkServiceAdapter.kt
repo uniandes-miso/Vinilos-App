@@ -14,6 +14,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Collector
 import com.miso.vinilosapp.models.Musician
+import com.miso.vinilosapp.ui.musicians
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -55,19 +56,18 @@ class NetworkServiceAdapter  constructor(context: Context) {
         requestQueue.add(
             getRequest("musicians",
                 { response ->
-                   val mapper = jacksonObjectMapper()
+                   /*val mapper = jacksonObjectMapper()
                    var musicians: List<Musician> = mapper.readValue(response)
                     Log.d("REFRESH DATA ALBUMS" , musicians.size.toString())
-                   // onComplete(musicians)
-                   // Log.d("REFRESH DATA MUSICIANS - tamano respuesta" , musicians.size.toString())
-                   // val resp = JSONArray(response)
-                   // val list = mutableListOf<Musician>()
-                   // for (i in 0 until resp.length()) {
-                    //    val item = resp.getJSONObject(i)
-                    //    list.add(i, Musician(Id = item.getInt("id") , name = item.getString("name") , image = item.getString("image")  , description = item.getString("description") , birthDate = item.getString("birthDate") , albums = listOf(item.getJSONArray("albums")))
-                   // }
-                    //Log.d("REFRESH DATA ALBUMS" , list.size.toString())
-                  //  onComplete(list)
+                   onComplete(musicians)*/
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<Musician>()
+                    for (i in 0 until resp.length()) {
+                       val item = resp.getJSONObject(i)
+                        list.add(i, Musician(Id = item.getInt("id") , name = item.getString("name") , image = item.getString("image")  , description = item.getString("description") , birthDate = item.getString("birthDate")))
+                    }
+                    Log.d("REFRESH DATA Musicias" , list.size.toString())
+                    onComplete(list)
                 },
                 {
                     onError(it)
@@ -80,10 +80,14 @@ class NetworkServiceAdapter  constructor(context: Context) {
         requestQueue.add(
             getRequest("collectors",
                 { response ->
-                    val mapper = jacksonObjectMapper()
-                    var collectors: List<Collector> = mapper.readValue(response)
-                    onComplete(collectors)
-                    Log.d("REFRESH DATA MUSICIANS - tamano respuesta" , collectors.size.toString())
+                    val resp = JSONArray(response)
+                    val list = mutableListOf<Collector>()
+                    for (i in 0 until resp.length()) {
+                        val item = resp.getJSONObject(i)
+                        list.add(i, Collector(Id = item.getInt("id") , name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")))
+                    }
+                    Log.d("REFRESH DATA Collectors" , list.size.toString())
+                    onComplete(list)
                 },
                 {
                     onError(it)

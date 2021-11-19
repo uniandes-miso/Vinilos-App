@@ -7,7 +7,7 @@ import com.miso.vinilosapp.network.NetworkServiceAdapter
 
 
 class CollectorRepository (val application: Application){
-    fun getMusicians(callback: (List<Collector>)->Unit, onError: (VolleyError)->Unit) {
+    fun getCollectors(callback: (List<Collector>)->Unit, onError: (VolleyError)->Unit) {
         NetworkServiceAdapter.getInstance(application).getCollectors({
             callback(it)
         },

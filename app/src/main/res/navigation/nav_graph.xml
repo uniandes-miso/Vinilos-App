@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.miso.vinilosapp.ui.menu"
-        android:label="fragment_menu"
+        android:label="Menú"
         tools:layout="@layout/fragment_menu">
         <action
             android:id="@+id/action_menuFragment_to_fragment_albums"
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.miso.vinilosapp.ui.album"
-        android:label="fragment_album"
+        android:label="Albums"
         tools:layout="@layout/fragment_albums">
         <action
             android:id="@+id/action_albumFragment_to_fragment_albums_detail"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/fragment_albums_detail"
         android:name="com.miso.vinilosapp.ui.fragment_albums_detail"
-        android:label="fragment_albums_detail">
+        android:label="Album detail">
         <argument
             android:name="albumId"
             app:argType="integer" />
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/musicianFragment"
         android:name="com.miso.vinilosapp.ui.musicians"
-        android:label="fragment_musician"
+        android:label="Musicians"
         tools:layout="@layout/fragment_musicians">
         <action
             android:id="@+id/action_musicianFragment_to_fragment_musicians_detail"
@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/fragment_musicians_detail"
         android:name="com.miso.vinilosapp.ui.fragment_musicians_detail"
-        android:label="fragment_musicians_detail">
+        android:label="Musicians detail">
         <argument
             android:name="Id"
             app:argType="integer" />
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/collectorFragment"
         android:name="com.miso.vinilosapp.ui.collectors"
-        android:label="fragment_collectors"
+        android:label="Collectors"
         tools:layout="@layout/fragment_collectors">
         <action
             android:id="@+id/action_collectorFragment_to_fragment_collectors_detail"
@@ -68,7 +68,7 @@
     <fragment
         android:id="@+id/fragment_collectors_detail"
         android:name="com.miso.vinilosapp.ui.collectors_detail"
-        android:label="fragment_collectors_detail">
+        android:label="Collectors detail">
         <argument
             android:name="Id"
             app:argType="integer" />

@@ -13,12 +13,13 @@
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/album_item.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/ITO-69/Desktop/Vinilos-App/app/src/main/res/layout/fragment_album.xml" value="0.24547101449275363" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_content.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_content.xml" value="0.12" />
         <entry key="app/src/main/res/layout/activity_content_collectors.xml" value="0.2866847826086957" />
         <entry key="app/src/main/res/layout/activity_content_musicians.xml" value="0.10955056179775281" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/album_item.xml" value="0.189209726443769" />
+        <entry key="app/src/main/res/layout/collectors_item.xml" value="0.1413373860182371" />
         <entry key="app/src/main/res/layout/fragment_albums.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_albums_detail.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_collectors.xml" value="0.10460992907801418" />
