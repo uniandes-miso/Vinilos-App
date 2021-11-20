@@ -16,6 +16,7 @@ import com.miso.vinilosapp.databinding.FragmentAlbumsBinding
 import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.ui.adapters.AlbumsAdapter
 import com.miso.vinilosapp.viewmodels.AlbumViewModel
+import com.squareup.picasso.Picasso
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

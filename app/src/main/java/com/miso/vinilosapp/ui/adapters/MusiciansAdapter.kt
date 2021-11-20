@@ -9,8 +9,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
 import com.miso.vinilosapp.databinding.MusicianItemBinding
+import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Musician
 import com.miso.vinilosapp.ui.musiciansDirections
+import com.squareup.picasso.Picasso
 
 class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolder>(){
 
@@ -35,6 +37,7 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
         holder.viewDataBinding.also {
             it.musician = musicians[position]
         }
+        holder.bind(musicians[position])
         holder.viewDataBinding.root.setOnClickListener {
             val action = musiciansDirections.actionMusicianFragmentToFragmentMusiciansDetail(musicians[position].Id)
             // Navigate using that action
@@ -52,6 +55,9 @@ class MusiciansAdapter : RecyclerView.Adapter<MusiciansAdapter.MusicianViewHolde
         companion object {
             @LayoutRes
             val LAYOUT = R.layout.musician_item
+        }
+        fun bind(musician: Musician){
+            Picasso.get().load(musician.image).into(viewDataBinding.iVCoverMusician)
         }
     }
 

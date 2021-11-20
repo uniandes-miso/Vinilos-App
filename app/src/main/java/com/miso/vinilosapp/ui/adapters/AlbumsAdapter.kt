@@ -11,6 +11,7 @@ import com.miso.vinilosapp.R
 import com.miso.vinilosapp.databinding.AlbumItemBinding
 import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.ui.albumDirections
+import com.squareup.picasso.Picasso
 
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
@@ -35,6 +36,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         holder.viewDataBinding.also {
             it.album = albums[position]
         }
+        holder.bind(albums[position])
         holder.viewDataBinding.root.setOnClickListener {
             val action = albumDirections.actionAlbumFragmentToFragmentAlbumsDetail(albums[position].albumId)
             // Navigate using that action
@@ -52,6 +54,10 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         companion object {
             @LayoutRes
             val LAYOUT = R.layout.album_item
+        }
+
+        fun bind(album: Album){
+            Picasso.get().load(album.cover).into(viewDataBinding.iVCoverAlbum)
         }
     }
 
