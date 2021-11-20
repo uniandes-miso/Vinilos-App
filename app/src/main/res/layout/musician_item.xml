@@ -6,43 +6,46 @@
     <data>
         <variable name="musician" type="com.miso.vinilosapp.models.Musician"/>
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:background="#343F4B"
+        android:orientation="horizontal">
 
-        <com.google.android.material.card.MaterialCardView
+        <ImageView
+            android:id="@+id/iVCoverMusician"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:srcCompat="@android:drawable/ic_menu_slideshow" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeWidth="1dp">
+            android:layout_height="match_parent"
+            android:background="#343F4B"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#343F4B"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/textMName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{musician.name}"
+                android:textColor="#80CBC4"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Nombre Musico" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{musician.name}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="#F8FFFFFF" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{musician.birthDate}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="#E9361E" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textMDescription"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="@{musician.description}"
+                tools:text="info genre"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+    </LinearLayout>
 </layout>
