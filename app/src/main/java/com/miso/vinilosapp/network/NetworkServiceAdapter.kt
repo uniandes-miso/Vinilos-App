@@ -36,7 +36,7 @@ class NetworkServiceAdapter  constructor(context: Context) {
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit){
         Log.d("REFRESH DATA ALBUMS" , "NETWORK SERVICE ADAPTER")
         requestQueue.add(getRequest("albums",
-            Response.Listener<String> { response ->
+            { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
                 for (i in 0 until resp.length()) {
@@ -46,7 +46,7 @@ class NetworkServiceAdapter  constructor(context: Context) {
                 Log.d("REFRESH DATA ALBUMS" , list.size.toString())
                 onComplete(list)
             },
-            Response.ErrorListener {
+            {
                 onError(it)
             }))
     }
@@ -75,7 +75,7 @@ class NetworkServiceAdapter  constructor(context: Context) {
     }
     fun getCollectors(onComplete:(resp:List<Collector>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("collectors",
-            Response.Listener<String> { response ->
+            { response ->
                 Log.d("tagb", response)
                 val resp = JSONArray(response)
                 val list = mutableListOf<Collector>()
@@ -85,7 +85,7 @@ class NetworkServiceAdapter  constructor(context: Context) {
                 }
                 onComplete(list)
             },
-            Response.ErrorListener {
+            {
                 onError(it)
                 Log.d("", it.message.toString())
             }))
