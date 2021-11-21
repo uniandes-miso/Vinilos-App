@@ -9,14 +9,14 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
 import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Collector
 import com.miso.vinilosapp.models.Musician
-import com.miso.vinilosapp.ui.musicians
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter  constructor(context: Context) {
     companion object{
@@ -33,63 +33,63 @@ class NetworkServiceAdapter  constructor(context: Context) {
         // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit){
-        Log.d("REFRESH DATA ALBUMS" , "NETWORK SERVICE ADAPTER")
+
+    suspend fun getAlbums() = suspendCoroutine<List<Album>> {cont->
+        Log.d("GET DATA ALBUMS" , "FROM NETWORK")
         requestQueue.add(getRequest("albums",
-            { response ->
+            Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
+                var item:JSONObject? = null
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
+                    item = resp.getJSONObject(i)
                     list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
                 }
                 Log.d("REFRESH DATA ALBUMS" , list.size.toString())
-                onComplete(list)
+                cont.resume(list)
             },
-            {
-                onError(it)
+            Response.ErrorListener {
+                cont.resumeWithException(it)
             }))
     }
 
-    fun getMusicians(onComplete: (resp: List<Musician>) -> Unit, onError: (error: VolleyError) -> Unit) {
-        Log.d("REFRESH DATA MUSICIANS" , "NETWORK SERVICE ADAPTER")
+    suspend fun getMusicians() = suspendCoroutine<List<Musician>> { cont ->
+        Log.d("GET DATA MUSICIANS" , "FROM NETWORK")
         requestQueue.add(
             getRequest("musicians",
                 { response ->
-                   /*val mapper = jacksonObjectMapper()
-                   var musicians: List<Musician> = mapper.readValue(response)
-                    Log.d("REFRESH DATA ALBUMS" , musicians.size.toString())
-                   onComplete(musicians)*/
                     val resp = JSONArray(response)
                     val list = mutableListOf<Musician>()
+                    var item:JSONObject? = null
                     for (i in 0 until resp.length()) {
-                       val item = resp.getJSONObject(i)
+                        item = resp.getJSONObject(i)
                         list.add(i, Musician(Id = item.getInt("id") , name = item.getString("name") , image = item.getString("image")  , description = item.getString("description") , birthDate = item.getString("birthDate")))
                     }
-                    onComplete(list)
+                    cont.resume(list)
                 },
                 {
-                    onError(it)
-                })
-        )
+                    cont.resumeWithException(it)
+                }))
     }
-    fun getCollectors(onComplete:(resp:List<Collector>)->Unit, onError: (error:VolleyError)->Unit) {
+
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>> { cont ->
         requestQueue.add(getRequest("collectors",
             { response ->
                 Log.d("tagb", response)
                 val resp = JSONArray(response)
                 val list = mutableListOf<Collector>()
+                var item:JSONObject? = null
                 for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
+                    item = resp.getJSONObject(i)
                     list.add(i, Collector(collectorId = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")))
                 }
-                onComplete(list)
+                cont.resume(list)
             },
             {
-                onError(it)
-                Log.d("", it.message.toString())
+                cont.resumeWithException(it)
             }))
     }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
