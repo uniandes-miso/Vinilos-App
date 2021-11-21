@@ -2,7 +2,6 @@ package com.miso.vinilosapp.repositories
 
 import android.app.Application
 import android.util.Log
-import com.android.volley.VolleyError
 import com.miso.vinilosapp.models.Collector
 import com.miso.vinilosapp.network.CacheManager
 import com.miso.vinilosapp.network.NetworkServiceAdapter
