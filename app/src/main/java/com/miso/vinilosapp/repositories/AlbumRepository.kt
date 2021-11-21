@@ -2,19 +2,22 @@ package com.miso.vinilosapp.repositories
 
 import android.app.Application
 import android.util.Log
-import com.android.volley.VolleyError
 import com.miso.vinilosapp.models.Album
+import com.miso.vinilosapp.network.CacheManager
 import com.miso.vinilosapp.network.NetworkServiceAdapter
 
 class AlbumRepository (val application: Application){
-    fun refreshData(callback: (List<Album>)->Unit, onError: (VolleyError)->Unit) {
-        Log.d("Albums", "refresh data albums")
-        //Determinar la fuente de datos que se va a utilizar. Si es necesario consultar la red, ejecutar el siguiente código
-        NetworkServiceAdapter.getInstance(application).getAlbums({
-            //Guardar los albumes de la variable it en un almacén de datos local para uso futuro
-            callback(it)
-        },
-            onError
-        )
+    private var id_Album: Int = 999
+    suspend fun refreshData(): List<Album>{
+        var memResponse = CacheManager.getInstance(application.applicationContext).getAlbums(id_Album)
+        if(memResponse.isEmpty()){
+            var listAlbums = NetworkServiceAdapter.getInstance(application).getAlbums()
+            CacheManager.getInstance(application.applicationContext).addAlbums(id_Album,listAlbums)
+            Log.d("Albums", "FROM RED")
+            return listAlbums
+        }else{
+            Log.d("Albums", "FROM CACHE")
+            return memResponse
+        }
     }
 }
