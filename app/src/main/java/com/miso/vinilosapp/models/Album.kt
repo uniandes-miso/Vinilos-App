@@ -7,8 +7,8 @@ data class Album(
     val releaseDate:String,
     val description:String,
     val genre:String,
-    val recordLabel:String //,
-    //var tracks:List<Track>?,
+    val recordLabel:String,
+    var tracks:List<Track>?
     //var performers:List<Perfomer>?,
     //var comments:List<Comment>?
 )

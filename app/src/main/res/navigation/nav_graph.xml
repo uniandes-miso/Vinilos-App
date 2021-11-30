@@ -62,7 +62,13 @@
             android:name="recordLabel"
             app:argType="string"
             android:defaultValue='""' />
+        <argument
+            android:name="albumTracks"
+            app:argType="com.miso.vinilosapp.models.Track[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
+
     <fragment
         android:id="@+id/musicianFragment"
         android:name="com.miso.vinilosapp.ui.musicians"

@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley
 import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Collector
 import com.miso.vinilosapp.models.Musician
+import com.miso.vinilosapp.models.Track
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -19,7 +20,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter  constructor(context: Context) {
     companion object{
-        const val BASE_URL= "https://back-vinyls-populated.herokuapp.com/"
+        const val BASE_URL= "https://thedcompany.herokuapp.com/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -39,10 +40,18 @@ class NetworkServiceAdapter  constructor(context: Context) {
             Response.Listener<String> { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Album>()
+                val listTracks = mutableListOf<Track>()
                 var item:JSONObject? = null
+                var tracks:JSONArray? = null
+                var itemtrack:JSONObject? = null
                 for (i in 0 until resp.length()) {
                     item = resp.getJSONObject(i)
-                    list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description")))
+                    tracks = resp.getJSONObject(i).getJSONArray("tracks")
+                    for (j in 0 until tracks.length()) {
+                        itemtrack = tracks.getJSONObject(j)
+                        listTracks.add(j, Track(id = itemtrack.getInt("id"),name = itemtrack.getString("name"), duration = itemtrack.getString("duration")))
+                    }
+                    list.add(i, Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), tracks = listTracks))
                 }
                 Log.d("REFRESH DATA ALBUMS" , list.size.toString())
                 cont.resume(list)
