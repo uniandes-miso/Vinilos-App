@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
 import com.miso.vinilosapp.databinding.AlbumItemBinding
 import com.miso.vinilosapp.models.Album
+import com.miso.vinilosapp.models.Track
 import com.miso.vinilosapp.ui.albumDirections
 import com.squareup.picasso.Picasso
 
@@ -45,7 +46,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
                 albums[position].releaseDate,
                 albums[position].description,
                 albums[position].genre,
-                albums[position].recordLabel
+                albums[position].recordLabel,
+                albums[position].tracks!!.toTypedArray()
             )
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)

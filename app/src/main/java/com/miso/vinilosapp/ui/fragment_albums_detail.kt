@@ -9,10 +9,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
+import com.miso.vinilosapp.databinding.FragmentAlbumsDetailBinding
 import com.miso.vinilosapp.models.Album
+import com.miso.vinilosapp.models.Track
 import com.miso.vinilosapp.ui.adapters.AlbumsAdapter
+import com.miso.vinilosapp.ui.adapters.TracksAdapter
 import com.miso.vinilosapp.viewmodels.AlbumViewModel
 import com.squareup.picasso.Picasso
 
@@ -31,27 +38,34 @@ private const val ARG_PARAM7 = "param7"
  */
 class fragment_albums_detail : Fragment() {
     // TODO: Rename and change types of parameters
-    private var albumId: Int? = null
+    private var albumId: Int = 0
     private var albumName: String? = null
     private var albumCover: String? = null
     private var albumRelease: String? = null
     private var albumDescription: String? = null
     private var albumGenre: String? = null
     private var albumRecord: String? = null
+    private var albumTracks: Array<Track>? = null
+
+    private var _binding: FragmentAlbumsDetailBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
 
     private var albumSelected: Album? = null
     private lateinit var viewModel: AlbumViewModel
+    private var trackAdapter: TracksAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            albumId = it.getInt("albumId")
+            albumId = it.getInt("albumId",0)
             albumName = it.getString("name")
             albumCover = it.getString("cover")
             albumRelease = it.getString("releaseDate")
             albumDescription = it.getString("description")
             albumGenre = it.getString("genre")
             albumRecord = it.getString("recordLabel")
+            albumTracks = it.getParcelableArray("albumTracks") as Array<Track>?
         }
     }
 
@@ -59,24 +73,28 @@ class fragment_albums_detail : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val activity = requireNotNull(this.activity) {
-            "You can only access the viewModel after onActivityCreated()"
-        }
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
+        _binding = FragmentAlbumsDetailBinding.inflate(inflater, container, false)
+        val view = binding.root
         //albumSelected =
-        Log.d("Album detail Size albums ", listOf(viewModel.albums).size.toString())
+        //Log.d("Size albums_ ", listOf(viewModel.albums).size.toString())
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_albums_detail, container, false)
-        //textAlbumName
+        trackAdapter = TracksAdapter()
+        return view
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Albums Detail" , albumId.toString())
+        recyclerView = binding.albumTracksRv
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = trackAdapter
+
+            Log.d("Albums Detail_" , albumId.toString())
 
         Picasso.get().load(albumCover).into(view.findViewById<ImageView>(R.id.iVCoverAlbum))
 
-        var tAlbumName : TextView = view.findViewById<TextView>(R.id.textAlbumName)
-        tAlbumName.setText(albumName)
+        binding.textAlbumName.text = albumName
+        //var tAlbumName : TextView = view.findViewById<TextView>(R.id.textAlbumName)
+        //tAlbumName.setText(binding.textAlbumName.text)
+
         var tAlbumDescription : TextView = view.findViewById<TextView>(R.id.textAlbumDescription)
         tAlbumDescription.setText(albumDescription)
         var tAlbumGenre : TextView = view.findViewById<TextView>(R.id.textAlbumGenre)
@@ -86,8 +104,20 @@ class fragment_albums_detail : Fragment() {
         var tAlbumRelease : TextView = view.findViewById<TextView>(R.id.textAlbumReleaseDate)
         tAlbumRelease.setText(albumRelease)
 
+    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onActivityCreated()"
+        }
+        trackAdapter!!.tracks = albumTracks!!
 
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
