@@ -68,10 +68,40 @@ class NetworkServiceAdapter  constructor(context: Context) {
                 { response ->
                     val resp = JSONArray(response)
                     val list = mutableListOf<Musician>()
+                    val listAlbums = mutableListOf<Album>()
                     var item:JSONObject? = null
+                    var albums:JSONArray? = null
+                    var itemalbum:JSONObject? = null
                     for (i in 0 until resp.length()) {
                         item = resp.getJSONObject(i)
-                        list.add(i, Musician(Id = item.getInt("id") , name = item.getString("name") , image = item.getString("image")  , description = item.getString("description") , birthDate = item.getString("birthDate")))
+                        albums = resp.getJSONObject(i).getJSONArray("albums")
+                        for (j in 0 until albums.length()) {
+                            itemalbum = albums.getJSONObject(j)
+                            listAlbums.add(
+                                j,
+                                Album(
+                                    albumId = itemalbum.getInt("id"),
+                                    name = itemalbum.getString("name"),
+                                    cover = itemalbum.getString("cover"),
+                                    recordLabel = itemalbum.getString("recordLabel"),
+                                    releaseDate = itemalbum.getString("releaseDate"),
+                                    genre = itemalbum.getString("genre"),
+                                    description = itemalbum.getString("description"),
+                                    tracks = emptyList()
+                                )
+                            )
+                            list.add(
+                                i,
+                                Musician(
+                                    Id = item.getInt("id"),
+                                    name = item.getString("name"),
+                                    image = item.getString("image"),
+                                    description = item.getString("description"),
+                                    birthDate = item.getString("birthDate"),
+                                    albums = listAlbums
+                                )
+                            )
+                        }
                     }
                     cont.resume(list)
                 },

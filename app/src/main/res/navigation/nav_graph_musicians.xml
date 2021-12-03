@@ -20,6 +20,23 @@
         <argument
             android:name="Id"
             app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="image"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="description"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="musicianalbums"
+            app:argType="com.miso.vinilosapp.models.Album[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/collectorFragment"
