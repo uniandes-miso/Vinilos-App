@@ -1,14 +1,20 @@
 package com.miso.vinilosapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
-import com.miso.vinilosapp.models.Collector
-import com.miso.vinilosapp.viewmodels.CollectorViewModel
+import com.miso.vinilosapp.databinding.FragmentCollectorsDetailBinding
+import com.miso.vinilosapp.databinding.FragmentMusiciansDetailBinding
+import com.miso.vinilosapp.models.Comment
+import com.miso.vinilosapp.ui.adapters.CommentsAdapter
+import com.miso.vinilosapp.ui.adapters.MusiciansAlbumsAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,12 +28,24 @@ private const val ARG_PARAM2 = "param2"
  */
 class collectors_detail : Fragment() {
     // TODO: Rename and change types of parameters
-    private var albumId: Int? = null
+    private var collectorId: Int = 0
+    private var name: String? = null
+    private var telephone: String? = null
+    private var email: String? = null
+    private var comments: Array<Comment>? = null
+    private var commentsAdapter: CommentsAdapter? = null
+    private var _binding: FragmentCollectorsDetailBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var recyclerViewComments: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            albumId = it.getInt("albumId")
+            collectorId = it.getInt("id")
+            name = it.getString("name")
+            telephone = it.getString("telephone")
+            email = it.getString("email")
+            comments = it.getParcelableArray("comments") as Array<Comment>?
         }
     }
 
@@ -35,28 +53,33 @@ class collectors_detail : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_collectors_detail, container, false)
+        Log.d("OncreateView Collectors detail", comments.toString())
+        _binding = FragmentCollectorsDetailBinding.inflate(inflater, container, false)
+        val view = binding.root
+        commentsAdapter = CommentsAdapter()
+        return view //inflater.inflate(R.layout.fragment_musicians_detail, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        recyclerViewComments = binding.collectorCommentRv
+        recyclerViewComments.layoutManager = LinearLayoutManager(context)
+        recyclerViewComments.adapter = commentsAdapter
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val activity = requireNotNull(this.activity) {
-            "You can only access the viewModel after onActivityCreated()"
-        }
+        super.onViewCreated(view, savedInstanceState)
+        var tCollectorName : TextView = view.findViewById<TextView>(R.id.textCollectorName)
+        tCollectorName.setText(name.toString())
+        var tCollectorEmail : TextView = view.findViewById<TextView>(R.id.textCollectorEmail)
+        tCollectorEmail.setText(email.toString())
+        var tCollectorPhone : TextView = view.findViewById<TextView>(R.id.textCollectorTelephone)
+        tCollectorPhone.setText(telephone.toString())
 
-        /*activity.actionBar?.title = getString(R.string.title_collectors)
-        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application)).get(
-            CollectorViewModel::class.java)
-        viewModel.collectors.observe(viewLifecycleOwner, Observer<List<Collector>> {
-            it.apply {
-                viewModelAdapter!!.collectors = this
-            }
-        })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
-            if (isNetworkError) onNetworkError()
-        })*/
+        Log.d("Collectors detail", comments?.size.toString())
+        //commentsAdapter!!.comments = comments!!
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

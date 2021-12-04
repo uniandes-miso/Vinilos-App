@@ -8,12 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
-import com.miso.vinilosapp.databinding.AlbumItemBinding
 import com.miso.vinilosapp.databinding.CollectorsItemBinding
-import com.miso.vinilosapp.databinding.MusicianItemBinding
-import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Collector
-import com.miso.vinilosapp.ui.albumDirections
 import com.miso.vinilosapp.ui.collectorsDirections
 
 
@@ -26,10 +22,9 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectorsAdapter.CollectorViewHolder {
-        Log.d("Collectors adapter" , "On create view")
         val withDataBinding: CollectorsItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            CollectorsAdapter.CollectorViewHolder.LAYOUT,
+            CollectorViewHolder.LAYOUT,
             parent,
             false)
         return CollectorsAdapter.CollectorViewHolder(withDataBinding)
@@ -40,7 +35,13 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
             it.collector = collectors[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = collectorsDirections.actionCollectorFragmentToFragmentCollectorsDetail(collectors[position].collectorId)
+            val action = collectorsDirections.actionCollectorFragmentToFragmentCollectorsDetail(
+                collectors[position].collectorId,
+                collectors[position].name,
+                collectors[position].telephone,
+                collectors[position].email,
+                collectors[position].comments!!.toTypedArray()
+            )
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }
