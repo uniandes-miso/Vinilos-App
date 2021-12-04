@@ -85,6 +85,23 @@
         <argument
             android:name="Id"
             app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="image"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="description"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="musicianalbums"
+            app:argType="com.miso.vinilosapp.models.Album[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/collectorFragment"
@@ -100,7 +117,24 @@
         android:name="com.miso.vinilosapp.ui.collectors_detail"
         android:label="Collectors detail">
         <argument
-            android:name="Id"
+            android:name="id"
             app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="telephone"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="comments"
+            app:argType="com.miso.vinilosapp.models.Comment[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

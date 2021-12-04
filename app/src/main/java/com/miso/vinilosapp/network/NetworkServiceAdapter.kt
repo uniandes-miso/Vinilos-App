@@ -8,10 +8,8 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.miso.vinilosapp.models.Album
-import com.miso.vinilosapp.models.Collector
-import com.miso.vinilosapp.models.Musician
-import com.miso.vinilosapp.models.Track
+import com.fasterxml.jackson.annotation.JsonTypeInfo
+import com.miso.vinilosapp.models.*
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -116,10 +114,90 @@ class NetworkServiceAdapter  constructor(context: Context) {
                 Log.d("tagb", response)
                 val resp = JSONArray(response)
                 val list = mutableListOf<Collector>()
+                var albumsC:JSONArray? = null
+                var itemalbum:JSONObject? = null
+                var itemComment:JSONObject? = null
+                var collectorComments:JSONArray? = null
+                val collecAlbums = mutableListOf<Album>()
+                val collecComments = mutableListOf<Comment>()
+               // val collectMusician = mutableListOf<Musician>()
+               // val listcollectMusicianAlbums = mutableListOf<Album>()
+               // var itemmusician:JSONObject? = null
+               // var itemCollecMusicianalbum:JSONObject? = null
                 var item:JSONObject? = null
                 for (i in 0 until resp.length()) {
                     item = resp.getJSONObject(i)
-                    list.add(i, Collector(collectorId = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")))
+                    collectorComments = resp.getJSONObject(i).getJSONArray("comments")
+                    albumsC = resp.getJSONObject(i).getJSONArray("collectorAlbums")
+                    for (c in 0 until collectorComments.length()) {
+                        itemComment = collectorComments.getJSONObject(c)
+                        collecComments.add(
+                            c,
+                            Comment(
+                                id = itemComment.getInt("id"),
+                                description = itemComment.getString("description"),
+                                rating = itemComment.getInt("rating")
+                            )
+                        )
+                    }
+                 //   musiciansC = resp.getJSONObject(i).getJSONArray("favoritePerformers")
+                 /*   for (j in 0 until albumsC.length()) {
+                        itemalbum = albumsC.getJSONObject(j)
+                        collecAlbums.add(
+                            j,
+                            Album(
+                                albumId = itemalbum.getInt("id"),
+                                name = itemalbum.getString("name"),
+                                cover = itemalbum.getString("cover"),
+                                recordLabel = itemalbum.getString("recordLabel"),
+                                releaseDate = itemalbum.getString("releaseDate"),
+                                genre = itemalbum.getString("genre"),
+                                description = itemalbum.getString("description"),
+                                tracks = emptyList()
+                            )
+                        )
+                    }*/
+                  /*  for (m in 0 until musiciansC.length()) {
+                        itemmusician = musiciansC.getJSONObject(m)
+                        listcollectMusicianAlbums = resp.getJSONObject(m).getJSONArray("albums")
+                        for (j in 0 until listcollectMusicianAlbums.length()) {
+                            itemCollecMusicianalbum = listcollectMusicianAlbums.getJSONObject(j)
+                            listcollectMusicianAlbums.add(
+                                j,
+                                Album(
+                                    albumId = itemalbum.getInt("id"),
+                                    name = itemalbum.getString("name"),
+                                    cover = itemalbum.getString("cover"),
+                                    recordLabel = itemalbum.getString("recordLabel"),
+                                    releaseDate = itemalbum.getString("releaseDate"),
+                                    genre = itemalbum.getString("genre"),
+                                    description = itemalbum.getString("description"),
+                                    tracks = emptyList()
+                                )
+                            )
+                        }
+                        collecAlbums.add(
+                            m,
+                            Musician(
+                                Id = itemmusician.getInt("id"),
+                                name = itemmusician.getString("name"),
+                                image = itemmusician.getString("image"),
+                                description = itemmusician.getString("description"),
+                                birthDate = itemmusician.getString("birthDate")
+                            )
+                        )
+                    }*/
+
+                    list.add(i,
+                        Collector(
+                            collectorId = item.getInt("id"),
+                            name = item.getString("name"),
+                            telephone = item.getString("telephone"),
+                            email = item.getString("email"),
+                            comments = collecComments
+                    //        collectorAlbums = collecAlbums
+                        )
+                    )
                 }
                 cont.resume(list)
             },
