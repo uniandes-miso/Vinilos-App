@@ -1,4 +1,4 @@
-package com.miso.vinilosapp.ui
+    package com.miso.vinilosapp.ui
 
 import android.os.Bundle
 import android.util.Log

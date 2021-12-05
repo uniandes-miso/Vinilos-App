@@ -7,6 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Comment(
     val id: Int,
     val description: String,
-    val rating: Int
+    val rating: String
 ): Parcelable
 

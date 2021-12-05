@@ -136,7 +136,7 @@ class NetworkServiceAdapter  constructor(context: Context) {
                             Comment(
                                 id = itemComment.getInt("id"),
                                 description = itemComment.getString("description"),
-                                rating = itemComment.getInt("rating")
+                                rating = itemComment.getString("rating")
                             )
                         )
                     }
