@@ -21,7 +21,8 @@
             android:layout_height="140dp"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            app:srcCompat="@android:drawable/ic_menu_slideshow" />
+            app:srcCompat="@android:drawable/ic_menu_slideshow"
+            android:contentDescription="Detalle del musico" />
         <TextView
             android:id="@+id/textMusicianName"
             android:layout_width="wrap_content"

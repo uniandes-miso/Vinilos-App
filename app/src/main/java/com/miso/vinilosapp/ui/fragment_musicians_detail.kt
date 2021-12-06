@@ -69,14 +69,9 @@ class fragment_musicians_detail : Fragment() {
 
             Picasso.get().load(musicianImage).into(view.findViewById<ImageView>(R.id.musicianImage))
 
-        var tMusicianId : TextView = view.findViewById<TextView>(R.id.textMusicianId)
-        tMusicianId.setText(musicianId.toString())
-
-        var tMusicianName : TextView = view.findViewById<TextView>(R.id.textMusicianName)
-        tMusicianName.setText(musicianName.toString())
-
-        var tMusicianDescription : TextView = view.findViewById<TextView>(R.id.textMusicianDescription)
-        tMusicianDescription.setText(musicianDescription.toString())
+        binding.textMusicianId.text = musicianId.toString()
+        binding.textMusicianName.text = musicianName.toString()
+        binding.textMusicianDescription.text = musicianDescription.toString()
 
         musicianAlbumsAdapter!!.albumes = musicianAlbums!!
 
