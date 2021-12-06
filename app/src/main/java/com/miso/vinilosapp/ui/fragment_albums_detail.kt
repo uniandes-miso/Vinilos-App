@@ -6,19 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miso.vinilosapp.R
 import com.miso.vinilosapp.databinding.FragmentAlbumsDetailBinding
-import com.miso.vinilosapp.models.Album
 import com.miso.vinilosapp.models.Track
-import com.miso.vinilosapp.ui.adapters.AlbumsAdapter
 import com.miso.vinilosapp.ui.adapters.TracksAdapter
 import com.miso.vinilosapp.viewmodels.AlbumViewModel
 import com.squareup.picasso.Picasso
@@ -51,7 +44,6 @@ class fragment_albums_detail : Fragment() {
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
 
-    private var albumSelected: Album? = null
     private lateinit var viewModel: AlbumViewModel
     private var trackAdapter: TracksAdapter? = null
 
@@ -75,9 +67,6 @@ class fragment_albums_detail : Fragment() {
     ): View? {
         _binding = FragmentAlbumsDetailBinding.inflate(inflater, container, false)
         val view = binding.root
-        //albumSelected =
-        //Log.d("Size albums_ ", listOf(viewModel.albums).size.toString())
-        // Inflate the layout for this fragment
         trackAdapter = TracksAdapter()
         return view
     }
@@ -92,17 +81,10 @@ class fragment_albums_detail : Fragment() {
         Picasso.get().load(albumCover).into(view.findViewById<ImageView>(R.id.iVCoverAlbum))
 
         binding.textAlbumName.text = albumName
-        //var tAlbumName : TextView = view.findViewById<TextView>(R.id.textAlbumName)
-        //tAlbumName.setText(binding.textAlbumName.text)
-
-        var tAlbumDescription : TextView = view.findViewById<TextView>(R.id.textAlbumDescription)
-        tAlbumDescription.setText(albumDescription)
-        var tAlbumGenre : TextView = view.findViewById<TextView>(R.id.textAlbumGenre)
-        tAlbumGenre.setText(albumGenre)
-        var tAlbumRecordLabel : TextView = view.findViewById<TextView>(R.id.textAlbumRecordLabel)
-        tAlbumRecordLabel.setText(albumRecord)
-        var tAlbumRelease : TextView = view.findViewById<TextView>(R.id.textAlbumReleaseDate)
-        tAlbumRelease.setText(albumRelease)
+        binding.textAlbumDescription.text = albumDescription
+        binding.textAlbumGenre.text = albumGenre
+        binding.textAlbumRecordLabel.text = albumRecord
+        binding.textAlbumReleaseDate.text = albumRelease
 
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {

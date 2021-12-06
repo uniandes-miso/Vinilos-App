@@ -19,7 +19,8 @@
             android:id="@+id/iVCoverAlbum"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:srcCompat="@android:drawable/ic_menu_slideshow" />
+            app:srcCompat="@android:drawable/ic_menu_slideshow"
+            android:contentDescription="Imagen del Album" />
 
         <LinearLayout
             android:layout_width="match_parent"

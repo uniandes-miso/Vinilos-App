@@ -66,12 +66,10 @@ class collectors_detail : Fragment() {
         recyclerViewComments.adapter = commentsAdapter
 
         super.onViewCreated(view, savedInstanceState)
-        var tCollectorName : TextView = view.findViewById<TextView>(R.id.textCollectorName)
-        tCollectorName.setText(name.toString())
-        var tCollectorEmail : TextView = view.findViewById<TextView>(R.id.textCollectorEmail)
-        tCollectorEmail.setText(email.toString())
-        var tCollectorPhone : TextView = view.findViewById<TextView>(R.id.textCollectorTelephone)
-        tCollectorPhone.setText(telephone.toString())
+
+        binding.textCollectorName.text = name.toString()
+        binding.textCollectorEmail.text = email.toString()
+        binding.textCollectorTelephone.text = telephone.toString()
 
         Log.d("Collectors detail", comments?.size.toString())
         //commentsAdapter!!.comments = comments!!

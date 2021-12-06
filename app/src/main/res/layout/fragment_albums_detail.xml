@@ -17,7 +17,8 @@
         android:layout_height="140dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        app:srcCompat="@android:drawable/ic_menu_slideshow" />
+        app:srcCompat="@android:drawable/ic_menu_slideshow"
+        android:contentDescription="Imagen detalle del album" />
 
     <TextView
         android:id="@+id/textAlbumName"
